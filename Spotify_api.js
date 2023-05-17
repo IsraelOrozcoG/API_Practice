@@ -14,7 +14,7 @@ async function fetchWebApi(endpoint, method, body) {
 async function getTopTracks(){
   // Endpoint reference : https://developer.spotify.com/documentation/web-api/reference/get-users-top-artists-and-tracks
   return (await fetchWebApi(
-    'v1/me/top/tracks?time_range=short_term&limit=5', 'GET'
+    'v1/me/top/tracks?time_range=short_term&limit=10', 'GET'
   )).items;
 }
 
@@ -25,3 +25,14 @@ console.log(
       `${name} by ${artists.map(artist => artist.name).join(', ')}`
   )
 );
+
+async function getCategories(){
+  return(await fetchWebApi(
+    "https://api.spotify.com/v1/me/shows?offset=0&limit=20",'GET'
+  )).items;
+}
+
+const categories = await getCategories();
+console.log(
+  categories
+  );
