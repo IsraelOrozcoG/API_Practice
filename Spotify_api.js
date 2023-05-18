@@ -34,5 +34,15 @@ async function getCategories(){
 
 const categories = await getCategories();
 console.log(
-  categories
-  );
+  categories);
+
+  async function getArtist(){
+    return(await fetchWebApi(
+    'https://api.spotify.com/v1/artists?ids=2CIMQHirSU0MQqyYHq0eOx%2C57dN52uHvrHOxijzpIgu3E%2C1vCWHaC5f2uS3yhpwWbIA6','GET'
+  
+    ));
+  }
+
+  const artist = await getArtist();
+  console.log(
+    artist);
